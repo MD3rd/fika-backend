@@ -6,10 +6,13 @@ const app = express();
 const multer = require('multer');
 const CryptoJS = require("crypto-js");
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  credentials: true 
+}));
 app.use(bodyParser.json());
 
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 var con = mysql.createConnection({
   host: "s3lkt7lynu0uthj8.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
